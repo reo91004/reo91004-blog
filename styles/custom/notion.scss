@@ -80,7 +80,7 @@ body {
 .notion {
   // 페이지
   .notion-page {
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   // 페이지 제목
@@ -183,6 +183,8 @@ body {
     // 우측 사이드 목차
     .notion-contentPosition {
       width: 100%;
+      max-height: calc(100vh - 300px);
+      overflow-y: auto; /* 수직 스크롤 허용 */
 
       .item {
         display: block;
@@ -322,7 +324,7 @@ body {
   // 제목1 ~ 제목3
   .notion {
     &-h1 {
-      font-size: 1.7rem;
+      font-size: 2rem; /* 1.7em */
 
       &::after {
         content: '';
@@ -336,12 +338,28 @@ body {
     }
 
     &-h2 {
-      font-size: 1.4rem;
+      font-size: 1.7rem;
       margin-top: 2rem;
     }
 
     &-h3 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  /* 노션 테이블 가운데 정렬 */
+  .notion-simple-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    td {
+      border-color: var(--fg-color-lighten);
+    }
+
+    tr:first-child td {
+      background-color: var(--fg-color-lighten);
     }
   }
 
@@ -353,7 +371,7 @@ body {
   // 리스트
   .notion-list {
     li {
-      padding: 3.5px 0;
+      padding: 5px 0;
       padding-left: 0.2rem;
 
       &::marker {

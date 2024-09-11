@@ -803,6 +803,17 @@ svg.notion-page-icon {
   max-width: 100vw;
 }
 
+.notion-asset-wrapper div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  height: auto !important; /* height를 auto로 설정하여 고정된 높이를 제거 */
+}
+
 .notion-asset-wrapper img {
   width: 100%;
   height: 100%;
@@ -1082,6 +1093,7 @@ svg.notion-page-icon {
   font-size: 14px;
   line-height: 1.4;
   color: var(--fg-color-3);
+  text-align: center;
 }
 
 .notion-callout {
@@ -1128,7 +1140,7 @@ svg.notion-page-icon {
 
 .notion-collection {
   align-self: center;
-  min-width: 100%;
+  width: 100%;
 }
 
 .notion-collection-header {
@@ -1157,7 +1169,7 @@ svg.notion-page-icon {
   border: 0 none;
   border-radius: 3px;
   transition: background 120ms ease-in 0s;
-  background: transparent;
+  background: hsla(0, 0%, 100%, 0.8);
 }
 
 .notion-collection-view-dropdown:hover {
