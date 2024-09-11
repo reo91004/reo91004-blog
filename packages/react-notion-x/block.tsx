@@ -134,7 +134,18 @@ export const Block: React.FC<BlockProps> = props => {
 
           const toc = getPageTableOfContents(block as types.PageBlock, recordMap);
 
-          const isBlogPost = block?.type === 'page' && block?.parent_table === 'collection';
+          // 2024-09-11 수정
+          // 카테고리를 제외하고 페이지 내에서의 페이지에도 toc를 할당하기 위해, 메인 페이지와 카테고리의 id를 예외처리
+          let isBlogPost =
+            block?.type === 'page' &&
+            (block?.parent_table === 'collection' || block?.parent_table === 'block');
+
+          if (
+            block?.parent_id === '122a0ba0-7797-45ba-9577-4d051564708c' ||
+            block?.parent_id === '1e596dc0-3171-4cd8-99e2-00be219f2c9d'
+          ) {
+            isBlogPost = false;
+          }
 
           const hasToc = showTableOfContents && toc.length >= minTableOfContentsItems;
           const hasAside = (hasToc || pageAside) && !page_full_width;
