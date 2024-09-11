@@ -6,6 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -26,6 +27,10 @@ module.exports = withBundleAnalyzer({
       {
         protocol: 'https',
         hostname: 's3.*.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'reo91004.notion.site', // 추가된 부분
       },
     ],
     formats: ['image/avif', 'image/webp'],
