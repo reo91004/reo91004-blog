@@ -189,9 +189,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
     block?.type === 'page' &&
     (block?.parent_table === 'collection' || block?.parent_table === 'block');
 
+  // 2024-09-12 수정
+  // 각 카테고리 parent_id를 지정했는데, 더 좋은 방법이 있기 전까지 사용
   if (
     block?.parent_id === '122a0ba0-7797-45ba-9577-4d051564708c' ||
-    block?.parent_id === '1e596dc0-3171-4cd8-99e2-00be219f2c9d'
+    block?.parent_id === '4269ff4f-eb0c-41fe-ab03-f8aef2554c94' ||
+    block?.parent_id === '1e596dc0-3171-4cd8-99e2-00be219f2c9d' ||
+    block?.parent_id === '589a2692-1f39-4eff-b5b2-308f37e7e687' ||
+    block?.parent_id === '8dad4d9d-ea6a-4ec4-a722-1fe1effd1f68' ||
+    block?.parent_id === 'cb15cd53-778b-4157-81d6-1ad166d13fd1' ||
+    block?.parent_id === 'a0533702-1ba9-4787-8af2-9d31a2742d65'
   ) {
     isBlogPost = false;
   }

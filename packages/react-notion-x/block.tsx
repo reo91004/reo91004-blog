@@ -140,6 +140,7 @@ export const Block: React.FC<BlockProps> = props => {
             block?.type === 'page' &&
             (block?.parent_table === 'collection' || block?.parent_table === 'block');
 
+          // 2024-09-12 수정
           // 각 카테고리 parent_id를 지정했는데, 더 좋은 방법이 있기 전까지 사용
           if (
             block?.parent_id === '122a0ba0-7797-45ba-9577-4d051564708c' ||
@@ -152,7 +153,6 @@ export const Block: React.FC<BlockProps> = props => {
           ) {
             isBlogPost = false;
           }
-          console.log(block);
 
           const hasToc = showTableOfContents && toc.length >= minTableOfContentsItems;
           const hasAside = (hasToc || pageAside) && !page_full_width;
