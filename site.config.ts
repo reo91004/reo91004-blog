@@ -9,7 +9,7 @@ export default siteConfig({
   //rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Code Archive',
+  name: "Reo's Archive",
   domain: 'reo91004.vercel.app',
   author: 'reo91004',
 
