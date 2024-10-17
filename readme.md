@@ -12,10 +12,12 @@ Please understand that the code and explanation are mainly written in Korean. �
 아래 사진들은 운영중인 제 블로그에서 가져온 리소스입니다. [2skydev blog](https://blog.2skydev.com)
 
 ### 라이트모드
+
 <img width="1792" alt="image" src="https://user-images.githubusercontent.com/43225384/202594029-e17f0231-88e3-4b22-8496-c75213337f6d.png">
 <img width="1747" alt="image" src="https://user-images.githubusercontent.com/43225384/197439019-14e34e5e-a918-4ee9-ba23-ed9e65ed5812.png">
 
 ### 다크모드
+
 <img width="1792" alt="image" src="https://user-images.githubusercontent.com/43225384/202594126-d66efacb-8105-465c-a67d-86c3c522748d.png">
 <img width="1743" alt="image" src="https://user-images.githubusercontent.com/43225384/197439046-488f763b-af4e-4376-8dee-87b2b53a7606.png">
 
@@ -117,6 +119,7 @@ OG Image (social-image)와 댓글 기능은 Notion API를 사용합니다. 아�
 [2skydev wiki - Notion API 키 발급 & 환경 변수 설정](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki/Notion-API-%ED%82%A4-%EB%B0%9C%EA%B8%89-&-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%84%A4%EC%A0%95)
 
 ### 6. 문서 읽기 [선택사항]
+
 더 자세한 문서는 아래 링크를 확인해주세요.
 
 [2skydev/blog - Wiki](https://github.com/2skydev/Notion-Next.js-blog-starter-kit/wiki)
@@ -164,11 +167,10 @@ OG Image (social-image)와 댓글 기능은 Notion API를 사용합니다. 아�
 `site.config.ts` 파일에 추가 설정이 가능하도록 구성해 두었습니다.<br/>
 추가 구성 정보는 아래 테이블을 확인해주세요.
 
-| 키                   | 기본값     | 설명                                                                                                                                                                                       |
-| -------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| dateformat           | yyyy.MM.dd | 날짜 포맷을 설정합니다. 유효한 값은 date-fns 포맷 문자열입니다.                                                                                                                            |
-| defaultTheme         | system     | 기본 테마를 설정합니다. 유효한 값은 `light`, `dark`, `system` 입니다                                                                                                                       |
-| hiddenPostProperties | []         | 글 상세 페이지에서 숨김 처리할 속성 이름들입니다.                                                                                                                                          |
-| enableComment        | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다.|
-| contentPositionTextAlign        | left      | 글 상세 페이지에서 우측에 표시되는 목차의 글자 정렬을 설정합니다. 유효한 값은 `left`, `right` 입니다 |
-
+| 키                       | 기본값     | 설명                                                                                                                                           |
+| ------------------------ | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| dateformat               | yyyy.MM.dd | 날짜 포맷을 설정합니다. 유효한 값은 date-fns 포맷 문자열입니다.                                                                                |
+| defaultTheme             | system     | 기본 테마를 설정합니다. 유효한 값은 `light`, `dark`, `system` 입니다                                                                           |
+| hiddenPostProperties     | []         | 글 상세 페이지에서 숨김 처리할 속성 이름들입니다.                                                                                              |
+| enableComment            | false      | 글 상세 페이지에서 댓글 기능을 활성화 여부입니다. 노션 댓글 기능을 사용하며 해당 기능을 사용 시 `NOTION_API_KEY` 환경 변수 설정이 필수 입니다. |
+| contentPositionTextAlign | left       | 글 상세 페이지에서 우측에 표시되는 목차의 글자 정렬을 설정합니다. 유효한 값은 `left`, `right` 입니다                                           |

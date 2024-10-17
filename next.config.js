@@ -37,13 +37,4 @@ module.exports = withBundleAnalyzer({
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/pages/api/sitemap.xml',
-      },
-    ];
-  },
 });
