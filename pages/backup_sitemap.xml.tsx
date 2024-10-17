@@ -1,51 +1,49 @@
-// next.config.js
+import type { GetServerSideProps } from 'next';
+import type { SiteMap } from 'lib/types';
+import { host } from 'lib/config';
+import { getSiteMap } from 'lib/get-site-map';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  // if (req.method !== 'GET') {
+  //   res.statusCode = 405
+  //   res.setHeader('Content-Type', 'application/json')
+  //   res.write(JSON.stringify({ error: 'method not allowed' }))
+  //   res.end()
+  //   return {
+  //     props: {}
+  //   }
+  // }
 
-module.exports = withBundleAnalyzer({
-  staticPageGenerationTimeout: 300,
-  images: {
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'www.notion.so',
-      },
-      {
-        protocol: 'https',
-        hostname: 'notion.so',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '**.twimg.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 's3.*.amazonaws.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'reo91004.notion.site', // 추가된 부분
-      },
-    ],
-    formats: ['image/avif', 'image/webp'],
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
+  const siteMap = await getSiteMap();
 
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap.xml',
-      },
-    ];
-  },
-});
+  // cache for up to 8 hours
+  res.setHeader('Cache-Control', 'public, max-age=28800, stale-while-revalidate=28800');
+  res.setHeader('Content-Type', 'text/xml');
+  res.write(createSitemap(siteMap));
+  res.end();
+
+  return {
+    props: {},
+  };
+};
+
+const createSitemap = (siteMap: SiteMap) =>
+  `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc>${host}/</loc>
+    </url>
+
+    ${Object.keys(siteMap.canonicalPageMap)
+      .map(canonicalPagePath =>
+        `
+          <url>
+            <loc>${host}/${encodeURIComponent(canonicalPagePath)}</loc>
+          </url>
+        `.trim(),
+      )
+      .join('')}
+  </urlset>
+`;
+
+export default () => null;
