@@ -4,15 +4,15 @@ import { host } from 'lib/config';
 import { getSiteMap } from 'lib/get-site-map';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  // if (req.method !== 'GET') {
-  //   res.statusCode = 405
-  //   res.setHeader('Content-Type', 'application/json')
-  //   res.write(JSON.stringify({ error: 'method not allowed' }))
-  //   res.end()
-  //   return {
-  //     props: {}
-  //   }
-  // }
+  if (req.method !== 'GET') {
+    res.statusCode = 405;
+    res.setHeader('Content-Type', 'application/json');
+    res.write(JSON.stringify({ error: 'method not allowed' }));
+    res.end();
+    return {
+      props: {},
+    };
+  }
 
   const siteMap = await getSiteMap();
 
@@ -31,6 +31,10 @@ const createSitemap = (siteMap: SiteMap) =>
   `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+      <loc>${host}</loc>
+    </url>
+
+    <url>
       <loc>${host}/</loc>
     </url>
 
@@ -38,7 +42,7 @@ const createSitemap = (siteMap: SiteMap) =>
       .map(canonicalPagePath =>
         `
           <url>
-            <loc>${host}/${encodeURIComponent(canonicalPagePath)}</loc>
+            <loc>${host}/${canonicalPagePath}</loc>
           </url>
         `.trim(),
       )
