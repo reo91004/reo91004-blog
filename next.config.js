@@ -42,7 +42,7 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/sitemap.xml',
-        destination: '/api/sitemap.xml',
+        destination: '/pages/api/sitemap.xml',
       },
     ];
   },
